@@ -16,6 +16,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useEffect, useState } from "react";
 import InfoIcon from "@mui/icons-material/Info";
+import CloseIcon from "@mui/icons-material/Close";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -58,15 +59,6 @@ export default function RecipeCard({ recipe }) {
     setExpanded(!expanded);
   };
 
-  // const timer = () => {
-  //   setTimeout(() => {
-  //     setExpanded(false);
-  //   }, 1500);
-  // };
-  // useEffect(() => {
-  //   timer();
-  // }, [expanded]);
-
   return (
     <>
       <Card
@@ -98,13 +90,11 @@ export default function RecipeCard({ recipe }) {
         />
         <CardMedia
           component="img"
-          // height="194"
           style={{
-            width: "16rem", // Set the width based on your design requirements
-            height: "9rem", // Calculate the height to maintain the 16:9 ratio
-            objectFit: "cover", // Ensure the image covers the container
+            width: "16rem",
+            height: "9rem",
+            objectFit: "cover",
           }}
-          // image="/static/images/cards/paella.jpg"
           image={recipe.image}
           alt="Paella dish"
         />
@@ -120,14 +110,9 @@ export default function RecipeCard({ recipe }) {
             {recipe.description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            <span
-              style={{
-                fontWeight: "bold",
-              }}
-            >
-              Price: {""}
-            </span>
-            {`${recipe.price} $`}
+            <strong>Price: {""}</strong>
+            {recipe.price}
+            {""} $
           </Typography>
         </CardContent>
 
@@ -160,7 +145,6 @@ export default function RecipeCard({ recipe }) {
               />{" "}
             </Typography>
           </Button>
-          {/* </div> */}
 
           <Modal
             open={open}
@@ -169,12 +153,15 @@ export default function RecipeCard({ recipe }) {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-                Text in a modal
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-              </Typography> */}
+              <img
+                src={recipe.image}
+                alt=""
+                style={{
+                  width: "16rem",
+                  height: "9rem",
+                  objectFit: "cover",
+                }}
+              />
               <Typography paragraph>Ingredients:</Typography>
               <Typography paragraph key={recipe.id}>
                 {recipe.ingredients.map((element, id) => (
@@ -188,39 +175,28 @@ export default function RecipeCard({ recipe }) {
                 Commodi quam veritatis eum officia eveniet. Eligendi officiis
                 officia eveniet nam natus!
               </Typography>
+              <Button
+                variant="outlined"
+                onClick={handleClose}
+                style={{
+                  color: "grey",
+                  border: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "end",
+                  marginLeft: "auto",
+                }}
+              >
+                Close
+                <CloseIcon />
+              </Button>
             </Box>
           </Modal>
-
-          {/* <InfoIcon /> */}
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            {/* <Typography paragraph>Method:</Typography> */}
-          </CardContent>
+          <CardContent></CardContent>
         </Collapse>
       </Card>
     </>
   );
 }
-
-//   return (
-//     <div>
-//       <Button onClick={handleOpen}>Open modal</Button>
-//       <Modal
-//         open={open}
-//         onClose={handleClose}
-//         aria-labelledby="modal-modal-title"
-//         aria-describedby="modal-modal-description"
-//       >
-//         <Box sx={style}>
-//           <Typography id="modal-modal-title" variant="h6" component="h2">
-//             Text in a modal
-//           </Typography>
-//           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-//             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-//           </Typography>
-//         </Box>
-//       </Modal>
-//     </div>
-//   );
-// }

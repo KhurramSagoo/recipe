@@ -13,19 +13,15 @@ function App() {
       <Box
         sx={{
           bgcolor: cyan[100],
-          // color: "white",
           border: "none",
           width: "100%",
-          // maxWidth: "lg",
           paddingTop: "20px",
           marginTop: "0",
-          // height: "200vh",
           maxHeight: "auto",
-          // margin: "0",
         }}
       >
         <Resturant />
-        <Test />
+        {/* <Test /> */}
       </Box>
     </Container>
   );
