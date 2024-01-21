@@ -33,7 +33,7 @@ export default [
   {
     id: 3,
     label: "Spaghetti Bolognese",
-    category: "Dinner",
+    category: "Evening",
     image: image3,
 
     description: "Classic spaghetti with a hearty meat sauce.",
@@ -126,8 +126,25 @@ export default [
     id: 12,
     label: "Fruit Parfait",
     image: image12,
-
     category: "Breakfast",
+    description: "Layers of yogurt, granola, and fresh fruit.",
+    ingredients: ["Yogurt", "Granola", "Berries", "Honey"],
+    price: 9.99,
+  },
+  {
+    id: 13,
+    label: "Fruit Parfait",
+    image: image12,
+    category: "Evening",
+    description: "Layers of yogurt, granola, and fresh fruit.",
+    ingredients: ["Yogurt", "Granola", "Berries", "Honey"],
+    price: 9.99,
+  },
+  {
+    id: 14,
+    label: "Fruit Parfait",
+    image: image12,
+    category: "Evening",
     description: "Layers of yogurt, granola, and fresh fruit.",
     ingredients: ["Yogurt", "Granola", "Berries", "Honey"],
     price: 9.99,

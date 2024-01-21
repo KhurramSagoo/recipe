@@ -9,7 +9,7 @@ import Collapse from "@mui/material/Collapse";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { blue, cyan, red } from "@mui/material/colors";
+import { blue, cyan, red, teal } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -34,6 +34,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeCard({ recipe }) {
+  const { id, image, category, description, label, price } = recipe;
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -53,6 +54,7 @@ export default function RecipeCard({ recipe }) {
     boxShadow: 24,
     borderRadius: "5px",
     p: 4,
+    bgcolor: teal[50],
   };
 
   const handleExpandClick = () => {
@@ -62,7 +64,7 @@ export default function RecipeCard({ recipe }) {
   return (
     <>
       <Card
-        sx={{ maxWidth: 260 }}
+        sx={{ maxWidth: 260, bgcolor: teal[100] }}
         style={{
           padding: "10px",
           margin: "10px",
@@ -77,7 +79,7 @@ export default function RecipeCard({ recipe }) {
               aria-label="recipe"
             >
               {/* {recipe.category.charAt(0)} */}
-              {recipe.id}
+              {id}
             </Avatar>
           }
           action={
@@ -85,7 +87,7 @@ export default function RecipeCard({ recipe }) {
               <MoreVertIcon />
             </IconButton>
           }
-          title={recipe.category}
+          title={category}
           // subheader={recipe.label}
         />
         <CardMedia
@@ -95,7 +97,7 @@ export default function RecipeCard({ recipe }) {
             height: "9rem",
             objectFit: "cover",
           }}
-          image={recipe.image}
+          image={image}
           alt="Paella dish"
         />
         <CardContent>
@@ -104,14 +106,14 @@ export default function RecipeCard({ recipe }) {
               fontWeight: "500",
             }}
           >
-            {recipe.label}
+            {label}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {recipe.description}
+            {description}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <strong>Price: {""}</strong>
-            {recipe.price}
+            {price}
             {""} $
           </Typography>
         </CardContent>
@@ -154,7 +156,7 @@ export default function RecipeCard({ recipe }) {
           >
             <Box sx={style}>
               <img
-                src={recipe.image}
+                src={image}
                 alt=""
                 style={{
                   width: "16rem",
@@ -163,7 +165,7 @@ export default function RecipeCard({ recipe }) {
                 }}
               />
               <Typography paragraph>Ingredients:</Typography>
-              <Typography paragraph key={recipe.id}>
+              <Typography paragraph key={id}>
                 {recipe.ingredients.map((element, id) => (
                   <ul key={id}>
                     <li>{element}</li>

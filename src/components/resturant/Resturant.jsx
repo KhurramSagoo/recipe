@@ -3,15 +3,32 @@ import RecipeCard from "./RecipeCard";
 import { Button, Container, Stack, colors } from "@mui/material";
 import { cyan } from "@mui/material/colors";
 import data from "./recepieApi";
+import Navbar from "./Navbar";
 
 const Resturant = () => {
+  const uniqueList = [
+    ...new Set(
+      data.map((curElem) => {
+        return curElem.category;
+      })
+    ),
+    "All",
+  ];
+  const [recipeData, setRecipeData] = useState(data);
+  const [recipeList, setRecipeList] = useState(uniqueList);
+
   const filterItem = (category) => {
+    if (category === "All") {
+      setRecipeData(data);
+      return;
+    }
     const updatedList = data.filter((curElem) => {
       return curElem.category === category;
     });
     setRecipeData(updatedList);
   };
-  const [recipeData, setRecipeData] = useState(data);
+
+  // console.log(uniqueList);
 
   return (
     <>
@@ -22,74 +39,7 @@ const Resturant = () => {
         justifyContent="center"
         className="nav-div"
       >
-        <Button
-          className="nav-btn"
-          variant="outlined"
-          onClick={() => filterItem("Breakfast")}
-          sx={{
-            bgcolor: cyan[100],
-            color: cyan[900],
-            border: "none",
-            "&:hover": {
-              bgcolor: cyan[900],
-              color: cyan[200],
-              border: "none",
-            },
-          }}
-        >
-          Breakfast
-        </Button>
-        <Button
-          className="nav-btn"
-          variant="outlined"
-          onClick={() => filterItem("Lunch")}
-          sx={{
-            bgcolor: cyan[100],
-            color: cyan[900],
-            border: "none",
-            "&:hover": {
-              bgcolor: cyan[900],
-              color: cyan[200],
-              border: "none",
-            },
-          }}
-        >
-          Lunch
-        </Button>
-        <Button
-          className="nav-btn"
-          variant="outlined"
-          onClick={() => filterItem("Dinner")}
-          sx={{
-            bgcolor: cyan[100],
-            color: cyan[900],
-            border: "none",
-            "&:hover": {
-              bgcolor: cyan[900],
-              color: cyan[200],
-              border: "none",
-            },
-          }}
-        >
-          Dinner
-        </Button>
-        <Button
-          className="nav-btn"
-          variant="outlined"
-          onClick={() => setRecipeData(data)}
-          sx={{
-            bgcolor: cyan[100],
-            color: cyan[900],
-            border: "none",
-            "&:hover": {
-              bgcolor: cyan[900],
-              color: cyan[200],
-              border: "none",
-            },
-          }}
-        >
-          All
-        </Button>
+        <Navbar filterItem={filterItem} recipeList={recipeList} />
       </Stack>
       <div
         className="recipe-div"
