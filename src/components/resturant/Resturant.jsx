@@ -14,13 +14,13 @@ const Resturant = () => {
     ),
     "All",
   ];
+
   const [recipeData, setRecipeData] = useState(data);
   const [recipeList, setRecipeList] = useState(uniqueList);
 
   const filterItem = (category) => {
     if (category === "All") {
-      setRecipeData(data);
-      return;
+      return setRecipeData(data);
     }
     const updatedList = data.filter((curElem) => {
       return curElem.category === category;
