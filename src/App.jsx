@@ -1,30 +1,36 @@
-import "./App.css";
-
-import Button from "@mui/material/Button";
-import Test from "./components/Test";
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Container, Box } from "@mui/material";
+import { cyan } from "@mui/material/colors";
+import NavBarMain from "./NavBarMain";
 import Resturant from "./components/resturant/Resturant";
-import { Box, Container } from "@mui/material";
-import { blueGrey, cyan } from "@mui/material/colors";
+import Cart from "./components/pages/Cart";
+import About from "./components/pages/About";
 
-function App() {
+const App = () => {
   return (
-    <Container maxWidth="xl" style={{ backgroundColor: cyan[100] }}>
-      <Box
-        sx={{
-          bgcolor: cyan[100],
-          border: "none",
-          width: "100%",
-          paddingTop: "20px",
-          marginTop: "0",
-          maxHeight: "auto",
-        }}
-      >
-        <Resturant />
-        {/* <Test /> */}
-      </Box>
-    </Container>
+    <Router>
+      <Container maxWidth="xl" style={{ backgroundColor: cyan[100] }}>
+        <Box
+          sx={{
+            bgcolor: cyan[100],
+            border: "none",
+            width: "100%",
+            paddingTop: "20px",
+            marginTop: "0",
+            maxHeight: "auto",
+          }}
+        >
+          <NavBarMain />
+          <Routes>
+            <Route path="/" element={<Resturant />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Box>
+      </Container>
+    </Router>
   );
-}
+};
 
 export default App;

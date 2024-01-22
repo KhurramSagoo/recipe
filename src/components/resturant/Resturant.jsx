@@ -4,6 +4,7 @@ import { Button, Container, Stack, colors } from "@mui/material";
 import { cyan } from "@mui/material/colors";
 import data from "./recepieApi";
 import Navbar from "./Navbar";
+import NavBarMain from "../../NavBarMain";
 
 const Resturant = () => {
   const uniqueList = [
@@ -32,12 +33,14 @@ const Resturant = () => {
 
   return (
     <>
+      {/* <NavBarMain /> */}
+      <br />
       <Stack
         direction="row"
-        spacing={2}
+        // spacing={2}
         alignItems="center"
         justifyContent="center"
-        className="nav-div"
+        // className="nav-div"
       >
         <Navbar filterItem={filterItem} recipeList={recipeList} />
       </Stack>
@@ -48,8 +51,8 @@ const Resturant = () => {
           alignItems: "flex-start",
           justifyContent: "center",
           flexWrap: "wrap",
-          margin: "10px",
-          padding: "10px",
+          // margin: "10px",
+          // padding: "10px",
         }}
       >
         {recipeData.map((recipe) => (
